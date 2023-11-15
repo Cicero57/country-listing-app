@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Raleway&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: "Poppins", sans-serif;
+	/* background-color: #f2f2f2; */
+	overflow-x: hidden;
+	place-items: center;
+	color: black;
+	min-width: 320px;
+	min-height: 100vh;
+	letter-spacing: 0.004em;
+	height: 100%;
+}
