@@ -28,7 +28,7 @@ const items = [
 ];
 const Home = () => {
   return (
-    <div className="mt-4">
+    <div className="mt-6">
       <div className="flex flex-wrap gap-6 items-center justify-center mx-auto">
         {items.map((item) => (
           <Card
@@ -44,7 +44,7 @@ const Home = () => {
             }
           >
             <div>
-              <h1>{item.title}</h1>
+              <h1>Country: {item.title}</h1>
               <p>
                 Capital: <span>{item.capital}</span>
               </p>
