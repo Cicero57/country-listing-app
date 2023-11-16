@@ -1,55 +1,46 @@
+import { useState, useEffect } from "react";
 import { Card } from "antd";
-import React from "react";
-const items = [
-  {
-    id: 1,
-    title: "nigeria",
-    capital: "abuja",
-    population: 1000,
-  },
-  {
-    id: 2,
-    title: "usa",
-    capital: "dc",
-    population: 3000,
-  },
-  {
-    id: 3,
-    title: "brazil",
-    capital: "brasilia",
-    population: 1000,
-  },
-  {
-    id: 4,
-    title: "germany",
-    capital: "berlin",
-    population: 7000,
-  },
-];
+import Axios from "axios";
+
 const Home = () => {
+  const [allCountry, setCountry] = useState([]);
+
+  // *****fetch all countries*****
+  const getAllCountries = async () => {
+    try {
+      const fetchData = await Axios.get("https://restcountries.com/v3.1/all");
+      console.log(fetchData);
+      setCountry(fetchData.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getAllCountries(); //call getAllCountries function
+  }, []);
+
   return (
     <div className="mt-6">
       <div className="flex flex-wrap gap-6 items-center justify-center mx-auto">
-        {items.map((item) => (
+        {allCountry?.map((country) => (
           <Card
-            key={item.id}
+            key={country?.name?.common}
             style={{
               width: 300,
             }}
-            cover={
-              <img
-                alt="example"
-                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-              />
-            }
+            cover={<img alt={country?.flags?.alt} src={country?.flags?.png} />}
           >
             <div>
-              {/* <h1>Country: {item.title}</h1> */}
+              <h1>Country: {country?.name?.common}</h1>
               <p>
-                Capital: <span>{item.capital}</span>
+                Capital: <span>{country?.capital}</span>
               </p>
               <p>
-                Population: <span>{item.population}</span>
+                Population: <span>{country?.population}</span>
+              </p>
+              <p>
+                Region: <span>{country?.region}</span>
               </p>
             </div>
           </Card>
