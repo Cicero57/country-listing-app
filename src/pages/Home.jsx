@@ -44,7 +44,7 @@ const Home = () => {
             }
           >
             <div>
-              <h1>Country: {item.title}</h1>
+              {/* <h1>Country: {item.title}</h1> */}
               <p>
                 Capital: <span>{item.capital}</span>
               </p>
