@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Card, Spin, Input, Select } from "antd";
+import { Card, Spin, Input, Select, Divider } from "antd";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -25,6 +25,7 @@ const Home = () => {
         a.name.common.localeCompare(b.name.common)
       );
       setCountry(sortedData);
+      // console.log(sortedData);
       setFilteredCountries(sortedData);
       setLoading(false);
     } catch (error) {
@@ -58,28 +59,29 @@ const Home = () => {
 
   return (
     <div className="mt-6">
-      <div className="search-bar-container  lg:w-3/4 py-3 px-5 flex flex-col lg:flex-row justify-between items-center mx-auto lg:ml-auto">
+      <div className=" mx-2 lg:flex lg:items-center lg:justify-between">
         <Search
           placeholder="Search for any country here..."
           onSearch={handleSearch}
           enterButton
-          className="mb-4 lg:mb-0"
+          className="w-full mx-auto mb-3 lg:mb-0 h-6 lg:w-[40%]"
         />
-        <div className="px-5 flex">
-          <Select
-            placeholder="Search by Region"
-            style={{ marginTop: 10 }}
-            onChange={handleRegionChange}
-            value={selectedRegion}
-          >
-            <Option value="All">All</Option>
-            <Option value="Africa">Africa</Option>
-            <Option value="Asia">Asia</Option>
-            <Option value="Europe">Europe</Option>
-            <Option value="Americas">Americas</Option>
-          </Select>
-        </div>
+
+        <Select
+          placeholder="Search by Region"
+          style={{ marginTop: 10 }}
+          onChange={handleRegionChange}
+          value={selectedRegion}
+          className="w-full mx-auto h-8 lg:w-[40%]"
+        >
+          <Option value="All">All</Option>
+          <Option value="Africa">Africa</Option>
+          <Option value="Asia">Asia</Option>
+          <Option value="Europe">Europe</Option>
+          <Option value="Americas">Americas</Option>
+        </Select>
       </div>
+      <Divider />
 
       <div className="flex flex-wrap gap-6 items-center justify-center mx-auto my-10">
         {loading ? (
@@ -97,6 +99,7 @@ const Home = () => {
                     name: country?.name?.common,
                     area: country?.area,
                     lang: Object.values(country?.languages),
+                    border: country?.borders,
                   },
                 });
               }}
