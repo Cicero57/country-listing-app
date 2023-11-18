@@ -1,32 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "antd";
-import Axios from "axios";
 
 const CountryDetails = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { state } = location;
-  const [borderCountries, setBorderCountries] = useState([]);
-
-  useEffect(() => {
-    const fetchBorderCountries = async () => {
-      if (state?.borders && state.borders.length > 0) {
-        try {
-          const response = await Axios.get(
-            `https://restcountries.com/v3.1/alpha?codes=${state.borders.join(
-              ","
-            )}`
-          );
-          setBorderCountries(response.data);
-        } catch (error) {
-          console.error("Error fetching border countries:", error);
-        }
-      }
-    };
-
-    fetchBorderCountries();
-  }, [state]);
 
   return (
     <div>
@@ -55,17 +34,19 @@ const CountryDetails = () => {
             Languages:
             <span> {state?.lang}</span>
           </p>
-          <div className="mt-5 lg:mt-10 flex">
+          <div className="mt-5 lg:mt-10 ">
             <h4> Border Countries: </h4>
-            <ul>
-              {borderCountries.map((borderCountry) => (
-                <li key={borderCountry?.name?.common}>
-                  <Link to={`/country-details/${borderCountry?.name?.common}`}>
-                    {borderCountry?.name?.common}
-                  </Link>
-                </li>
+
+            <div className="flex items-center gap-x-4">
+              {state?.border?.map((borderCountry, index) => (
+                <p
+                  key={index}
+                  className="cursor-pointer shadow-lg rounded-md p-2 hover:bg-black hover:text-white"
+                >
+                  {borderCountry ? borderCountry : "No borders"}
+                </p>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </div>
