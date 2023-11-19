@@ -37,11 +37,11 @@ const CountryDetails = () => {
           <div className="mt-5 lg:mt-10">
             <h4> Border Countries: </h4>
 
-            <div className="flex items-center gap-x-4">
+            <div className="flex items-center gap-x-2 lg:gap-x-4">
               {state?.border?.map((borderCountry, index) => (
                 <p
                   key={index}
-                  className="cursor-pointer shadow-lg rounded-md hover:bg-black hover:text-white"
+                  className="cursor-pointer shadow-lg p-1 lg:p-2 rounded-md hover:bg-black hover:text-white"
                 >
                   {borderCountry ? borderCountry : "No borders"}
                 </p>
