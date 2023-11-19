@@ -25,7 +25,7 @@ const CountryDetails = () => {
             className="w-full h-full lg:w-[450px] lg:h-[300px] rounded-md"
           />
         </div>
-        <div className="leading-8 my-2">
+        <div className="leading-8 my-2 w-full h-full lg:w-[450px] lg:h-[300px]">
           <h3 className="font-semibold">Country: {state?.name}</h3>
           <p>
             Area: <span>{state?.area}</span>
@@ -34,14 +34,14 @@ const CountryDetails = () => {
             Languages:
             <span> {state?.lang}</span>
           </p>
-          <div className="mt-5 lg:mt-10 ">
+          <div className="mt-5 lg:mt-10">
             <h4> Border Countries: </h4>
 
             <div className="flex items-center gap-x-4">
               {state?.border?.map((borderCountry, index) => (
                 <p
                   key={index}
-                  className="cursor-pointer shadow-lg rounded-md p-2 hover:bg-black hover:text-white"
+                  className="cursor-pointer shadow-lg rounded-md hover:bg-black hover:text-white"
                 >
                   {borderCountry ? borderCountry : "No borders"}
                 </p>
