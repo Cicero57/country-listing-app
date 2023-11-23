@@ -8,7 +8,7 @@ const CountryDetails = () => {
   const { state } = location;
 
   return (
-    <div>
+    <div className="m-2">
       <Button
         className="shadow-lg px-8 m-5"
         onClick={() => {
@@ -25,7 +25,7 @@ const CountryDetails = () => {
             className="w-full h-full lg:w-[450px] lg:h-[300px] rounded-md"
           />
         </div>
-        <div className="leading-8 my-2 w-full h-full lg:w-[450px] lg:h-[300px]">
+        <div className="leading-8 my-2 w-full lg:w-[450px]">
           <h3 className="font-semibold">Country: {state?.name}</h3>
           <p>
             Area: <span>{state?.area}</span>
@@ -37,14 +37,14 @@ const CountryDetails = () => {
           <div className="mt-5 lg:mt-10">
             <h4> Border Countries: </h4>
 
-            <div className="flex items-center gap-x-2 lg:gap-x-4">
+            <div className="flex flex-wrap items-center gap-x-2 lg:gap-x-4 whitespace-normal ">
               {state?.border?.map((borderCountry, index) => (
-                <p
+                <div
                   key={index}
                   className="cursor-pointer shadow-lg p-1 lg:p-2 rounded-md hover:bg-black hover:text-white"
                 >
                   {borderCountry ? borderCountry : "No borders"}
-                </p>
+                </div>
               ))}
             </div>
           </div>
