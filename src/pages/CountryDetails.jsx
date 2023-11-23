@@ -8,7 +8,7 @@ const CountryDetails = () => {
   const { state } = location;
 
   return (
-    <div className="m-2">
+    <div className="m-1">
       <Button
         className="shadow-lg px-8 m-5"
         onClick={() => {
